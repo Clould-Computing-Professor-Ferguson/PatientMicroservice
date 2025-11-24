@@ -37,12 +37,10 @@ You can view it in:
 | `curl -X POST "http://127.0.0.1:8000/patients" \
 -H "Content-Type: application/json" \
 -d '{"name": "John Doe", "age": 30, "condition": "Flu"}'` | POST request |
-| `curl -X PUT "http://127.0.0.1:8000/patients/637ad193-196f-4029-9e53-98cfd127b488" \
--H "Content-Type: application/json" \
--d '{
-  "first_name": "Alice",
-  "condition": "Recovered"
-}' ` | Modify the patient tuple in database|
+| `curl -X PUT "http://127.0.0.1:8000/patients/f0499557-8099-45c2-919b-a4b17bf6e276" \
+-H "Content-Type: application/json" \ -d '{
+  "first_name": "Aris"
+}'\` | Modify the patient tuple in database|
 | `source .venv/bin/activate` | activate the .venv environment |
 | `curl -i http://127.0.0.1:8000/patients/<id>` | Retrieving patient by patient id|
 | `curl -i "http://127.0.0.1:8000/patients/patient-d" \

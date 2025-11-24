@@ -34,17 +34,11 @@ You can view it in:
 |:------:|:------------|
 | `uvicorn main:app --reload --host 0.0.0.0 --port 8000` | Start the FastAPI server|
 | `curl http://127.0.0.1:8000/patients` | Send GET request (check service is up) |
-| `curl -X POST "http://127.0.0.1:8000/patients" \
--H "Content-Type: application/json" \
--d '{"name": "John Doe", "age": 30, "condition": "Flu"}'` | POST request |
-| `curl -X PUT "http://127.0.0.1:8000/patients/f0499557-8099-45c2-919b-a4b17bf6e276" \
--H "Content-Type: application/json" \ -d '{
-  "first_name": "Aris"
-}'\` | Modify the patient tuple in database|
+| `curl -X POST "http://127.0.0.1:8000/patients" -H "Content-Type: application/json" -d '{"name": "John Doe", "age": 30, "condition": "Flu"}'` | POST request |
+| `curl -X PUT "http://127.0.0.1:8000/patients/f0499557-8099-45c2-919b-a4b17bf6e276" -H "Content-Type: application/json" -d '{"first_name":"Aris"}'` | Modify the patient tuple in database|
 | `source .venv/bin/activate` | activate the .venv environment |
 | `curl -i http://127.0.0.1:8000/patients/<id>` | Retrieving patient by patient id|
-| `curl -i "http://127.0.0.1:8000/patients/patient-d" \
-  -H 'If-None-Match: W/"<your-etag-here>"' ` | chekcing wether or not is been modified |
+| `curl -i "http://127.0.0.1:8000/patients/patient-d" -H 'If-None-Match: W/"<your-etag-here>"' ` | chekcing wether or not is been modified |
 | `curl -i http://127.0.0.1:8000/patients?limit=2&offset=0` | pagination to specify the number of tuple return and number of tuple to skip |
 
 ---

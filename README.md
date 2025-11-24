@@ -42,8 +42,7 @@ You can view it in:
 -d '{
   "first_name": "Alice",
   "condition": "Recovered"
-}'
-` | Modify the patient tuple in database|
+}' ` | Modify the patient tuple in database|
 | `source .venv/bin/activate` | activate the .venv environment |
 | `curl -i http://127.0.0.1:8000/patients/<id>` | Retrieving patient by patient id|
 | `curl -i "http://127.0.0.1:8000/patients/patient-d" \

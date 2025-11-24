@@ -39,7 +39,7 @@ You can view it in:
 | `source .venv/bin/activate` | activate the .venv environment |
 | `curl -i http://127.0.0.1:8000/patients/<id>` | Retrieving patient by patient id|
 | `curl -i "http://127.0.0.1:8000/patients/patient-d" -H 'If-None-Match: W/"<your-etag-here>"' ` | chekcing wether or not is been modified |
-| `curl -i http://127.0.0.1:8000/patients?limit=2&offset=0` | pagination to specify the number of tuple return and number of tuple to skip |
+| `curl -i "http://127.0.0.1:8000/patients?limit=2&offset=0"` | pagination to specify the number of tuple return and number of tuple to skip |
 
 ---
 

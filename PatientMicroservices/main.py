@@ -8,6 +8,7 @@ from fastapi import Request, Response, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import Query
+from typing import Optional
 
 app = FastAPI(title="PatientMicroservice API", version="1.0.0")
 

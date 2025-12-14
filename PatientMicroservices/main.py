@@ -26,6 +26,9 @@ def create_patient(payload: PatientCreate, db: Session = Depends(get_db)):
 
 @app.get("/patients", response_model=list[PatientRead])
 def list_patients(
+    name: Optional[str] = Query(None, description="Filter by patient name"),
+    min_age: Optional[int] = Query(None, ge=0, description="Minimum age"),
+    max_age: Optional[int] = Query(None, ge=0, description="Maximum age"),  
     limit: int = 10,
     offset: int = 0,
     db: Session = Depends(get_db)

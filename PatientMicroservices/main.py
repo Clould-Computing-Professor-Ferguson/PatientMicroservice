@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import Query
 from typing import Optional
+from sqlalchemy.orm import Session
 
 app = FastAPI(title="PatientMicroservice API", version="1.0.0")
 
@@ -27,16 +28,33 @@ def create_patient(payload: PatientCreate, db: Session = Depends(get_db)):
 
 @app.get("/patients", response_model=list[PatientRead])
 def list_patients(
-    first_name: Optional[str] = Query(None, description="Filter by patient name"),
-    last_name: Optional[str] = Query(None, description="Filter by patient name"),
-    gender: Optional[str] = Query(None, description="Filter by patient name"),
-    limit: int = 10,
-    offset: int = 0,
-    db: Session = Depends(get_db)
+    first_name: Optional[str] = Query(None, description="Filter by first name"),
+    last_name: Optional[str] = Query(None, description="Filter by last name"),
+    gender: Optional[str] = Query(None, description="Filter by gender"),
+    limit: int = Query(10, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+    db: Session = Depends(get_db),
 ):
+    query = db.query(PatientORM)
+
+    if first_name:
+        query = query.filter(
+            PatientORM.first_name.ilike(f"%{first_name.strip()}%")
+        )
+
+    if last_name:
+        query = query.filter(
+            PatientORM.last_name.ilike(f"%{last_name.strip()}%")
+        )
+
+    if gender:
+        query = query.filter(
+            PatientORM.gender == gender.strip().lower()
+        )
+
     return (
-        db.query(PatientORM)
-        .order_by(PatientORM.created_at)  # optional, but best practice
+        query
+        .order_by(PatientORM.created_at)
         .limit(limit)
         .offset(offset)
         .all()

@@ -7,7 +7,7 @@ from models.patient import PatientCreate, PatientUpdate, PatientRead
 from fastapi import Request, Response, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-
+from fastapi import Query
 
 app = FastAPI(title="PatientMicroservice API", version="1.0.0")
 

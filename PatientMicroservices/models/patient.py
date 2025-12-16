@@ -142,7 +142,7 @@ class PatientUpdate(BaseModel):
 class PatientRead(PatientBase):
     """Returned when reading patient data."""
 
-    id: UUID = Field(default_factory=str)
+    id: str = Field(default_factory=str, description="Columbia email prefix (e.g. jw4804)")
     created_at: datetime = Field(default_factory=datetime.utcnow, description="Record creation timestamp (UTC).")
     updated_at: Optional[datetime] = Field(None, description="Last update timestamp (UTC).")
 

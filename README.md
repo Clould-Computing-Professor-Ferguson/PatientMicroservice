@@ -52,3 +52,4 @@ You can view it in:
 | `mysql -h 10.128.0.5 -u appuser -p` | Log into the MySQL database running on another VM (IP: 10.128.0.5) (password: 12345) |
 | `USE patientdb;` | Select Database |
 |`DESCRIBE patients;` | Show table schema|
+|`TRUNCATE TABLE patients` | remove all tuple in this table |

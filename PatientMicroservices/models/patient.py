@@ -11,10 +11,9 @@ class PatientBase(BaseModel):
     Base patient schema shared across creation, reading, and updating.
     """
 
-    id: UUID = Field(
-        default_factory=uuid4,
-        description="Unique patient ID (server-generated).",
-        json_schema_extra={"example": "550e8400-e29b-41d4-a716-446655440000"},
+    id: str = Field(
+        description="Unique patient ID.",
+        json_schema_extra={"Columbia UNI (email prefix)"},
     )
 
     first_name: str = Field(

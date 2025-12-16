@@ -31,7 +31,7 @@ def uuid_str() -> str:
 class PatientORM(Base):
     __tablename__ = "patients"
 
-    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    id: Mapped[str] = mapped_column(String(16), primary_key=True,index=True)
     first_name: Mapped[str] = mapped_column(String(100))
     last_name: Mapped[str] = mapped_column(String(100))
     date_of_birth: Mapped[Date | None] = mapped_column(Date, nullable=True)

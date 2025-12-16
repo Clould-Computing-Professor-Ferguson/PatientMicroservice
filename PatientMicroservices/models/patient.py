@@ -115,7 +115,6 @@ class PatientCreate(PatientBase):
 
 class PatientUpdate(BaseModel):
     """All fields optional to allow partial updates."""
-
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     date_of_birth: Optional[date] = None
@@ -124,7 +123,7 @@ class PatientUpdate(BaseModel):
     email: Optional[EmailStr] = None
     address: Optional[str] = None
     emergency_contact: Optional[str] = None
-    condition: Optional[str] = None  # 🆕 Added here
+    condition: Optional[str] = None  
 
     model_config = {
         "title": "PatientUpdate",
@@ -143,7 +142,7 @@ class PatientUpdate(BaseModel):
 class PatientRead(PatientBase):
     """Returned when reading patient data."""
 
-    id: UUID = Field(default_factory=uuid4, description="Unique patient ID (server-generated).")
+    id: UUID = Field(default_factory=str)
     created_at: datetime = Field(default_factory=datetime.utcnow, description="Record creation timestamp (UTC).")
     updated_at: Optional[datetime] = Field(None, description="Last update timestamp (UTC).")
 
